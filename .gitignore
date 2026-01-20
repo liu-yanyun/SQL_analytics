@@ -1,0 +1,14 @@
+# OS/editor
+.DS_Store
+*.swp
+.vscode/
+
+# Data & DBs
+projects/**/data/raw/
+projects/**/data/processed/
+*.db
+*.sqlite
+*.sqlite3
+
+# Logs
+*.log
