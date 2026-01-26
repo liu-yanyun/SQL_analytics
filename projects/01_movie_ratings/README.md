@@ -1,4 +1,4 @@
-# MovieLens SQL Analysis
+# MovieLens SQL Analysis (In Progress)
 
 ## Overview
 This project explores the MovieLens dataset using SQLite to answer practical questions about movie popularity, user behaviour, and tagging activity.
