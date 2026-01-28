@@ -53,7 +53,7 @@ JOIN ratings AS r
 GROUP BY m.movieId
 HAVING COUNT(*) >= 50
 ORDER BY avg_rating DESC
-LIMIT 20;
+LIMIT 10;
 
 -- Q6. How many ratings does a typical movie receive?
 SELECT AVG(n_ratings) AS avg_ratings
@@ -63,14 +63,19 @@ FROM (
   GROUP BY movieId
 );
 
--- Q7. Is there a relationship between popularity and quality?
+-- Q7. Q4. Is there a relationship between popularity (number of ratings) and quality (average rating)??
 SELECT
-  m.title, COUNT(t.tag) AS n_tags
-FROM movies AS m
-JOIN tags AS t 
-  ON m.movieId = t.movieId
+  m.title,
+  COUNT(r.rating) AS num_ratings,
+  ROUND(AVG(r.rating), 2) AS avg_rating
+FROM movies m
+JOIN ratings r
+  ON m.movieId = r.movieId
 GROUP BY m.movieId
+HAVING COUNT(r.rating) >= 30
+ORDER BY num_ratings DESC
 LIMIT 10;
+
 
 -- ======================================================
 -- SECTION 3 — User Behaviour & Engagement
@@ -173,7 +178,8 @@ FROM
     ON r1.movieId = r2.movieId
 WHERE r2.userId <> 2
 GROUP BY r2.userId
-ORDER BY num_shared_movies DESC;
+ORDER BY num_shared_movies DESC
+LIMIT 10;
 
 -- Q15. Which user pairs have the most movies in common?
 -- User similarity
@@ -321,13 +327,14 @@ LEFT JOIN (
   GROUP BY movieId
 ) AS r
   ON t.movieId = r.movieId
-ORDER BY t.num_tags DESC;
+ORDER BY t.num_tags DESC
+LIMIT 10;
 
 -- ======================================================
 -- SECTION 9 — Open Questions & Future Work
 -- ======================================================
 
--- Do certain genres tend to receive higher ratings on average?
+-- Q23. Do certain genres tend to receive higher ratings on average?
 SELECT 
   m.genres,
   AVG(r.rating) AS avg_rating
@@ -387,7 +394,7 @@ ORDER BY avg_rating DESC;
 
 -- Are there movies that appear in the catalogue but have never been rated?
 -- Do highly active users rate movies differently from less active users?
--- Q9. Do users who tag movies rate more than average users?
+-- Do users who tag movies rate more than average users?
 -- Which users tend to rate movies much higher or lower than others?
 -- Detect harsh vs generous raters
 -- Normalising ratings in recommender systems
