@@ -24,5 +24,8 @@ These types of analyses are commonly used to support recommendation systems, con
 SQL queries were written in SQLite using joins, subqueries, aggregations, and self-joins.
 
 ## Structure
-- sql/: SQL scripts
-- reports/: written analysis and interpretation
+- data/: SQLite database file and raw data
+- scripts/: data download script (`download_data.sh`)
+- sql/: SQL scripts (`01_schema.sql`, `02_analysis.sql`)
+- reports/: `movielens_sql_analysis.md` (written analysis and interpretation)
+
