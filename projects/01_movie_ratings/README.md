@@ -12,6 +12,8 @@ This project uses the MovieLens "ml-latest-small" dataset provided by GroupLens.
 
 MovieLens "ml-latest-small" dataset, containing movies, ratings, tags, and user interactions.
 
+The downloaded dataset is in .csv format and cannot be directly used in SQLite, so a movies.db database was built using the build_db.sh script.
+
 ## Key Questions
 Through SQL-based analysis, this project answers practical questions such as:
 - Which movies are most popular or highly rated?
@@ -25,7 +27,7 @@ SQL queries were written in SQLite using joins, subqueries, aggregations, and se
 
 ## Structure
 - data/: SQLite database file and raw data
-- scripts/: data download script (`download_data.sh`)
+- scripts/: data download and database build scripts (`build_db.sh`, `download_data.sh`)
 - sql/: SQL scripts (`01_schema.sql`, `02_analysis.sql`)
 - reports/: `movielens_sql_analysis.md` (written analysis and interpretation)
 

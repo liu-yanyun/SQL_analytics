@@ -400,6 +400,7 @@ ORDER BY avg_rating DESC;
 -- Normalising ratings in recommender systems
 -- Which movies receive very different ratings from different users?
 -- Polarising movies
+
 -- Risky recommendation
 -- Which users have similar average ratings across the same set of movies?
 -- Taste similarity
